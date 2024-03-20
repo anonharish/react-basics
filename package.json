@@ -1,0 +1,35 @@
+{
+  "name": "ep1",
+  "version": "1.0.0",
+  "description": "this is react learning project",
+  "scripts": {
+    "test": "jest",
+    "start": "rm -rf .parcel-cache && parcel",
+    "build": "rm -rf .parcel-cache && parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anonharish/react-basics.git"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "\"harish\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anonharish/react-basics/issues"
+  },
+  "homepage": "https://github.com/anonharish/react-basics#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":[
+    "last 10 version"
+  ]
+}

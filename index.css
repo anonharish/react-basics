@@ -41,9 +41,26 @@ margin: 0;
 .card-container{
     height: 300px;
     width:200px;
+    border-radius: 15px;
+    padding: 5px;
     background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
 }
 .restaurant-card-img{
     width: 200px;
     height: 100px;
+}
+.btn-primary{
+    padding: 14px 25px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: none;
+    background-color: blueviolet;
+    color:white;
+    margin-bottom: 20px;
+}
+.btn-primary:hover{
+    background-color: darkblue;
 }

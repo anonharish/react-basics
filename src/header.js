@@ -1,30 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../src/assets/fooddelivery.png"
 
 const Header = () => {
+  const [btnText,setBtnText]=useState("Login");
   return (
     <div>
-      <div className='header-container'>
-        <img src={logo} className='logo-img'/>
+      <div className="header-container">
+        <img src={logo} className="logo-img" />
         <div>
-          <ul className='nav-container'>
-            <li className='nav-item'>
-              Home
-            </li>
-            <li className='nav-item'>
-              About
-            </li>
-            <li className='nav-item'>
-              Cart
-            </li>
-            <li className='nav-item'>
-              Contact us
-            </li>
+          <ul className="nav-container">
+            <li className="nav-item">Home</li>
+            <li className="nav-item">About</li>
+            <li className="nav-item">Cart</li>
+            <li className="nav-item">Contact us</li>
+            <button
+              style={{width:"60px",padding:"4px 8px"}}
+              onClick={() => {
+                btnText == "Login" ? setBtnText("Logout") : setBtnText("Login");
+              }}
+            >
+              {btnText}
+            </button>
           </ul>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Header;

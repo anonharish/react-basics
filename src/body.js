@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import RestuarantCard from "./components/restuarantCard";
 import { Shimmer } from "./components/shimmer";
 
 const Body = () => {
   const [restaurantData, setRestuarantData] = React.useState([]);
+  const [filterRestaurants,setFilterRestaurants] = useState([]);
+  const [searchTerm,setSearchTerm] = useState("");
   const getTopRatedRestaurant = () => {
     let filterdTopRatedRestaurants = restaurantData.filter(
       (restuarant) => restuarant.info.avgRating > 3.9
     );
-    setRestuarantData(filterdTopRatedRestaurants);
+    setFilterRestaurants(filterdTopRatedRestaurants);
   };
 
   React.useEffect(() => {
@@ -21,19 +23,41 @@ const Body = () => {
           transformedData?.data?.cards?.[4]?.card?.card?.gridElements
             ?.infoWithStyle?.restaurants
         );
+        setFilterRestaurants(
+          transformedData?.data?.cards?.[4]?.card?.card?.gridElements
+            ?.infoWithStyle?.restaurants
+        );
       });
   }, []);
 
   return (
     <div className="body-container">
-      <button className="btn-primary" onClick={getTopRatedRestaurant}>
-        Top Rated Restauarant
-      </button>
+      <div style={{display:"flex"}}>
+        <div className="search-container" style={{marginRight:"10px"}}>
+          <input
+            type="text"
+            placeholder="search the restaurant"
+            value={searchTerm}
+            onChange={(e)=>{
+              setSearchTerm(e.target.value)
+            }}
+          />
+          <button onClick={() => {
+            let filteredRestaurantsList = restaurantData.filter(restuarant=>{
+              return restuarant.info.name.toLowerCase().includes(searchTerm.toLowerCase());
+            })
+            setFilterRestaurants(filteredRestaurantsList);
+          }}>submit</button>
+        </div>
+        <button className="btn-primary" onClick={getTopRatedRestaurant}>
+          Top Rated Restauarant
+        </button>
+      </div>
       {restaurantData.length == 0 ? (
         <Shimmer />
       ) : (
         <div className="restaurants-container">
-          {restaurantData.map((restuarant) => (
+          {filterRestaurants.map((restuarant) => (
             <RestuarantCard restuarant={restuarant.info} />
           ))}
         </div>

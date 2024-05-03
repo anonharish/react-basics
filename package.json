@@ -4,7 +4,7 @@
   "description": "this is react learning project",
   "scripts": {
     "test": "jest",
-    "start": "rm -rf .parcel-cache && parcel",
+    "start": "parcel index.html",
     "build": "rm -rf .parcel-cache && parcel build"
   },
   "repository": {

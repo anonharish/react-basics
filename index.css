@@ -81,3 +81,9 @@ margin: 0;
     text-decoration: none; /* Removes underline */
     color: inherit; /* Keeps text color from parent component */
   }
+.user-card{
+    border:2px solid black;
+    padding:20px 40px;
+    width: 200px;
+}
+

@@ -5,7 +5,7 @@ const FoodListAccordion = ({ foodCategories,showListItems,setListItemsIndex, }) 
   const handleClick=()=>{
     setListItemsIndex()
   }
-  console.log(foodCategories?.card?.card?.itemCards, "harish");
+ 
   return (
     <>
       <div className="px-4 py-3 bg-slate-100 mb-4 shadow-lg cursor-pointer" onClick={handleClick}>

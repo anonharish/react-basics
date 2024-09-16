@@ -3,11 +3,14 @@ import logo from "../src/assets/fooddelivery.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import UserContex from "./utils/Usercontex";
+import { useSelector } from "react-redux";
+import cartItems from './utils/cartSlice';
 
 const Header = () => {
   const [btnText, setBtnText] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const {loggedInUser}=useContext(UserContex);
+  const cartItems=useSelector(state=>state.items)
 
   return (
     <div>
@@ -24,7 +27,9 @@ const Header = () => {
             <li className="nav-item">
               <Link to="/about">About</Link>
             </li>
-            <li className="nav-item">Cart</li>
+            <li className="nav-item">
+              <Link to="/cart">Cart({cartItems.length})</Link>
+            </li>
             <li className="nav-item">
               <Link to="/grocery">Grocery Store</Link>
             </li>

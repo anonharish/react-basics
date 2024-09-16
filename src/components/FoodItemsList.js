@@ -1,10 +1,14 @@
 import { PARENTIMAGEURL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem} from "../utils/cartSlice";
 const ItemCards = ({ item }) => {
   const { name,price,ratings,description,imageId, } = item?.card?.info;
+  const dispatch=useDispatch();
   const {rating,ratingCountV2} = ratings?.aggregatedRating;
+  const handleClick=(cartItem)=>{
+    dispatch(addItem(cartItem));
+  }
 
-
-  console.log(ratings, "hello");
   return (
     <>
       <div className="flex justify-between mx-6 my-4 border-b-2 border-gray-300 pb-3" >
@@ -19,7 +23,7 @@ const ItemCards = ({ item }) => {
         </div>
         <div className="w-3/12 relative">
           <img src={PARENTIMAGEURL+imageId} alt="dish_img" className="rounded-2xl"/>
-          <button className="block bg-white text-green-700 font-bold text-2xl border px-8 py-1 rounded-xl absolute right-[15%] bottom-[0%] ">ADD</button>
+          <button className="block bg-white text-green-700 font-bold text-2xl border px-8 py-1 rounded-xl absolute right-[15%] bottom-[0%] " onClick={()=>handleClick(item)}>ADD</button>
         </div>
       </div>
     </>
@@ -27,7 +31,6 @@ const ItemCards = ({ item }) => {
 };
 
 export const FoodItemsList = ({ foodItems }) => {
-  console.log(foodItems, "insideFoodItemsList");
   return (
     <>
       {foodItems.map((item) => {

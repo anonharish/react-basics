@@ -18,4 +18,15 @@ const {slaString}=sla;
   )
 }
 
+export const withTopRatedLabel = () => {
+  return (restaurant) => {
+    return (
+      <>
+        <label className="border bg-black text-white py-1 px-2 inline absolute ml-3 mt-2 rounded-lg">Highly Rated</label>
+        <RestuarantCard {...restaurant}/>
+      </>
+    );
+  };
+};
+
 export default RestuarantCard;
